@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LinkedIn B2B Strategy: Immersion Wingman Edition</title>
+    <title>LinkedIn B2B Master Strategy: Full Product Matrix</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
     <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
@@ -14,6 +14,7 @@
             background-color: #F0F4F8;
             color: #1F2937;
         }
+        /* Chart Containers */
         .chart-container {
             position: relative;
             width: 100%;
@@ -26,30 +27,16 @@
         body.english-mode .lang-en { display: block; }
         body.english-mode .lang-zh { display: none; }
 
-        /* Custom UI Components */
-        .card-hover {
-            @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
-        }
-        .section-title {
-            @apply text-3xl md:text-4xl font-bold text-[#004AAD] mb-2 text-center;
-        }
-        .section-subtitle {
-            @apply text-gray-600 text-center max-w-3xl mx-auto mb-10;
-        }
+        /* Components */
+        .card-hover { @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1; }
+        .section-title { @apply text-3xl md:text-4xl font-bold text-[#004AAD] mb-2 text-center; }
+        .section-subtitle { @apply text-gray-600 text-center max-w-3xl mx-auto mb-10; }
         
         /* Tabs */
-        .tab-btn {
-            @apply px-4 py-3 font-bold text-xs md:text-sm cursor-pointer transition-all duration-300 border-b-4 border-transparent text-gray-500 w-full text-center bg-gray-50 hover:bg-gray-100;
-        }
-        .tab-btn.active {
-            @apply text-[#004AAD] border-[#004AAD] bg-white shadow-sm;
-        }
-        .tab-content {
-            @apply hidden p-6 bg-white border border-gray-200 shadow-sm rounded-b-lg rounded-tr-lg;
-        }
-        .tab-content.active {
-            @apply block;
-        }
+        .tab-btn { @apply px-2 py-3 font-bold text-xs md:text-sm cursor-pointer transition-all duration-300 border-b-4 border-transparent text-gray-500 flex-1 text-center bg-gray-50 hover:bg-gray-100; }
+        .tab-btn.active { @apply text-[#004AAD] border-[#004AAD] bg-white shadow-sm; }
+        .tab-content { @apply hidden p-6 bg-white border border-gray-200 shadow-sm rounded-b-lg rounded-tr-lg; }
+        .tab-content.active { @apply block; }
 
         /* Timeline & Code Block */
         .timeline-item { @apply relative pl-8 md:pl-0; }
@@ -59,19 +46,9 @@
         .timeline-item:nth-child(even) .timeline-content { @apply md:mr-[55%] md:text-right border-l-0 border-r-4 border-[#004AAD]; }
         .code-block { @apply bg-gray-900 text-green-400 font-mono text-xs md:text-sm p-3 rounded mt-2 overflow-x-auto whitespace-nowrap border border-gray-700 shadow-inner; }
         
-        /* Wingman Strategy Styles */
-        .wingman-card {
-            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
-            color: white;
-        }
-        .wingman-badge {
-            background-color: #00C4D1;
-            color: #0f172a;
-            font-weight: bold;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 0.75rem;
-        }
+        /* Wingman & BPO Styles */
+        .wingman-card { background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%); color: white; }
+        .bpo-gradient { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); }
     </style>
 </head>
 <body class="">
@@ -82,15 +59,15 @@
             <div class="flex items-center gap-2">
                 <div class="w-8 h-8 bg-[#004AAD] rounded-lg flex items-center justify-center text-white font-bold">Li</div>
                 <h1 class="text-lg md:text-xl font-bold text-gray-800 hidden md:block">
-                    <span class="lang-zh">B2B 实操全案 (僚机策略版)</span><span class="lang-en">B2B Playbook (Wingman Ed.)</span>
+                    <span class="lang-zh">B2B 终极实操全案</span><span class="lang-en">B2B Ultimate Playbook</span>
                 </h1>
             </div>
             <div class="flex items-center space-x-1 md:space-x-4 text-sm font-medium overflow-x-auto no-scrollbar">
                 <a href="#strategy" class="hover:text-[#004AAD] whitespace-nowrap px-2"><span class="lang-zh">战略</span><span class="lang-en">Strategy</span></a>
-                <a href="#wingman" class="text-[#00C4D1] font-bold whitespace-nowrap px-2"><span class="lang-zh">⚡ 僚机战术</span><span class="lang-en">⚡ Wingman</span></a>
-                <a href="#products" class="hover:text-[#004AAD] whitespace-nowrap px-2"><span class="lang-zh">OCP/储能</span><span class="lang-en">OCP/ESS</span></a>
+                <a href="#products" class="text-[#D946EF] font-bold whitespace-nowrap px-2"><span class="lang-zh">飞轮/OCP</span><span class="lang-en">Flywheel/OCP</span></a>
+                <a href="#wingman" class="hover:text-[#004AAD] whitespace-nowrap px-2"><span class="lang-zh">僚机</span><span class="lang-en">Wingman</span></a>
+                <a href="#bpo" class="text-[#00C4D1] font-bold whitespace-nowrap px-2"><span class="lang-zh">数字展厅</span><span class="lang-en">Showroom</span></a>
                 <a href="#scripts" class="hover:text-[#004AAD] whitespace-nowrap px-2"><span class="lang-zh">话术</span><span class="lang-en">Scripts</span></a>
-                <a href="#bpo" class="hover:text-[#004AAD] whitespace-nowrap px-2"><span class="lang-zh">数字展厅</span><span class="lang-en">Showroom</span></a>
                 <button id="langToggle" class="bg-[#004AAD] text-white px-3 py-1 rounded hover:bg-[#0065D1] transition ml-2 text-xs md:text-sm font-bold shadow-sm">
                     CN/EN
                 </button>
@@ -107,8 +84,8 @@
                 <span class="lang-en">Strategic Landscape Overview</span>
             </h2>
             <p class="section-subtitle">
-                <span class="lang-zh">三大市场目标：DC 项目、OEM 供应链、全球代理商</span>
-                <span class="lang-en">Three Core Targets: DC Projects, OEM Supply Chain, Global Distributors</span>
+                <span class="lang-zh">三大市场目标与定制化渗透路径</span>
+                <span class="lang-en">Three Core Targets & Penetration Paths</span>
             </p>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -122,8 +99,8 @@
                         <span class="lang-zh">新马 DC 项目攻坚</span><span class="lang-en">SG/MY DC Projects</span>
                     </h3>
                     <p class="text-sm text-gray-600 mb-4">
-                        <span class="lang-zh">针对 Hyperscale 项目，推广高密度 OCP 计算基础设施。</span>
-                        <span class="lang-en">Targeting Hyperscale projects with high-density OCP infra.</span>
+                        <span class="lang-zh">针对 Hyperscale 项目，推广<b>飞轮 UPS</b> 与 OCP 高密度方案。</span>
+                        <span class="lang-en">Targeting Hyperscale with <b>Flywheel UPS</b> & OCP infra.</span>
                     </p>
                     <div class="chart-container h-40">
                         <canvas id="dcRolesChart"></canvas>
@@ -140,8 +117,8 @@
                         <span class="lang-zh">台湾 OEM 供应链</span><span class="lang-en">Taiwan OEM Supply Chain</span>
                     </h3>
                     <p class="text-sm text-gray-600 mb-4">
-                        <span class="lang-zh">深入新竹/内湖科技园，利用<b>僚机策略</b>撬动二级供应商。</span>
-                        <span class="lang-en">Deep dive into Hsinchu/Neihu, using <b>Wingman Strategy</b> to unlock Tier 2s.</span>
+                        <span class="lang-zh">深入新竹/内湖科技园，利用<b>浸没式僚机策略</b>撬动二级供应商。</span>
+                        <span class="lang-en">Deep dive into Hsinchu/Neihu, using <b>Wingman Strategy</b>.</span>
                     </p>
                     <div class="chart-container h-40">
                         <canvas id="oemKeywordsChart"></canvas>
@@ -158,8 +135,8 @@
                         <span class="lang-zh">全球渠道招募</span><span class="lang-en">Global Channel Recruitment</span>
                     </h3>
                     <p class="text-sm text-gray-600 mb-4">
-                        <span class="lang-zh">寻找具备储能或服务器分销能力的区域代理。</span>
-                        <span class="lang-en">Recruiting regional distis with Energy/Server capabilities.</span>
+                        <span class="lang-zh">寻找具备 OCP 整机柜集成或飞轮安装能力的区域代理。</span>
+                        <span class="lang-en">Recruiting regional distis with OCP/Flywheel caps.</span>
                     </p>
                     <div class="chart-container h-40">
                         <canvas id="distributorTypeChart"></canvas>
@@ -168,258 +145,294 @@
             </div>
         </section>
 
-        <!-- 2. NEW: IMMERSION WINGMAN STRATEGY -->
+        <!-- 2. CORE PRODUCT LINES (Flywheel & OCP) -->
+        <section id="products" class="bg-white rounded-2xl shadow-xl overflow-hidden">
+            <div class="bg-gray-900 p-8 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-[#D946EF] mb-2">
+                    <span class="lang-zh">核心产品矩阵深度解析</span>
+                    <span class="lang-en">Core Product Matrix Deep Dive</span>
+                </h2>
+                <p class="text-gray-400">
+                    <span class="lang-zh">基于 HHE 飞轮技术与 OCP 标准的下一代数据中心方案</span>
+                    <span class="lang-en">Next-Gen DC Solutions based on HHE Flywheel & OCP Standards</span>
+                </p>
+            </div>
+
+            <div class="p-8 grid grid-cols-1 lg:grid-cols-2 gap-12">
+                
+                <!-- Product 1: Flywheel UPS -->
+                <div class="space-y-6">
+                    <div class="flex items-center gap-4 border-b pb-4 border-gray-200">
+                        <div class="w-16 h-16 bg-purple-100 rounded-lg flex items-center justify-center text-4xl">⚙️</div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-800">
+                                <span class="lang-zh">飞轮储能 UPS (Flywheel)</span>
+                                <span class="lang-en">Flywheel Energy Storage UPS</span>
+                            </h3>
+                            <p class="text-sm text-purple-600 font-bold">MW-Class Vacuum Maglev Technology</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-purple-50 p-5 rounded-lg border border-purple-100">
+                        <h4 class="font-bold text-gray-800 mb-3 border-b border-purple-200 pb-1"><span class="lang-zh">核心技术亮点</span><span class="lang-en">Key Technical Highlights</span></h4>
+                        <ul class="list-none text-sm text-gray-700 space-y-2">
+                            <li>✅ <span class="font-bold text-purple-700">磁悬浮轴承 (Maglev):</span> <span class="lang-zh">无机械摩擦，零损耗，免维护。</span><span class="lang-en">Frictionless, zero loss, maintenance-free.</span></li>
+                            <li>✅ <span class="font-bold text-purple-700">真空室运行 (Vacuum):</span> <span class="lang-zh">消除风阻，转速达数万转/分，储能密度高。</span><span class="lang-en">Eliminates drag, ultra-high RPM, high density.</span></li>
+                            <li>✅ <span class="font-bold text-purple-700">MW 级阵列 (Array):</span> <span class="lang-zh">支持 1000kVA - 3000kVA 并联，快速毫秒级响应。</span><span class="lang-en">Supports 1MW-3MW parallel, ms-level response.</span></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="font-bold text-gray-800 mb-2"><span class="lang-zh">对比传统电池优势</span><span class="lang-en">Advantages vs Batteries</span></h4>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="p-3 border rounded hover:border-purple-500 transition bg-white">
+                                <div class="text-xs text-gray-500">Lifespan</div>
+                                <div class="font-bold text-purple-700 text-lg">20 Years</div>
+                                <div class="text-xs text-gray-400">Vs Lead-Acid 3-5 yrs</div>
+                            </div>
+                            <div class="p-3 border rounded hover:border-purple-500 transition bg-white">
+                                <div class="text-xs text-gray-500">Temp Range</div>
+                                <div class="font-bold text-purple-700 text-lg">-20°C~50°C</div>
+                                <div class="text-xs text-gray-400">No AC required</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2: OCP Rack Power Cooling -->
+                <div class="space-y-6">
+                    <div class="flex items-center gap-4 border-b pb-4 border-gray-200">
+                        <div class="w-16 h-16 bg-pink-100 rounded-lg flex items-center justify-center text-4xl">🖥️</div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-800">
+                                <span class="lang-zh">OCP 机柜/供电/散热</span>
+                                <span class="lang-en">OCP Rack Power Cooling</span>
+                            </h3>
+                            <p class="text-sm text-pink-600 font-bold">ORv3 Standard Infrastructure</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 gap-4">
+                        <div class="flex items-start gap-3 p-3 bg-gray-50 rounded">
+                            <div class="text-2xl">🏛️</div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 text-sm"><span class="lang-zh">Rack (机柜)</span><span class="lang-en">Rack System</span></h4>
+                                <p class="text-xs text-gray-600 mt-1"><span class="lang-zh">OCP ORv3 21英寸整机柜，集成液冷分水歧管 (Manifold)，单柜支持 30kW-100kW。</span><span class="lang-en">OCP ORv3 21" Open Rack, integrated liquid manifolds, supports 30kW-100kW/rack.</span></p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3 p-3 bg-gray-50 rounded">
+                            <div class="text-2xl">⚡</div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 text-sm"><span class="lang-zh">Power (供电)</span><span class="lang-en">Power System</span></h4>
+                                <p class="text-xs text-gray-600 mt-1"><span class="lang-zh">48V 直流母排 (Busbar)，Power Shelf (电源框)，盲插设计，N+1 冗余，效率 97.5%+。</span><span class="lang-en">48V DC Busbar, Power Shelf, Blind-mate, N+1 redundancy, 97.5%+ eff.</span></p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3 p-3 bg-gray-50 rounded">
+                            <div class="text-2xl">❄️</div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 text-sm"><span class="lang-zh">Cooling (散热)</span><span class="lang-en">Cooling System</span></h4>
+                                <p class="text-xs text-gray-600 mt-1"><span class="lang-zh">冷板式液冷 (DLC)，背门热交换器 (RDHx)，及单相浸没式液冷 Tank。</span><span class="lang-en">Direct-to-Chip (DLC), Rear Door Heat Exchanger (RDHx), Immersion Tanks.</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Wingman Strategy -->
         <section id="wingman" class="mb-16">
             <div class="wingman-card rounded-2xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
-                <!-- Decorative bubbles -->
-                <div class="absolute top-0 right-0 w-64 h-64 bg-[#00C4D1] rounded-full filter blur-[80px] opacity-20"></div>
-                <div class="absolute bottom-0 left-0 w-48 h-48 bg-blue-500 rounded-full filter blur-[60px] opacity-20"></div>
-
                 <div class="relative z-10 text-center mb-10">
                     <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
-                        <span class="lang-zh">🚀 核心战术：浸没式液冷“僚机”策略</span>
-                        <span class="lang-en">🚀 Core Tactic: The Immersion "Wingman" Strategy</span>
+                        <span class="lang-zh">🚀 僚机战术：浸没式液冷 Demo</span>
+                        <span class="lang-en">🚀 Wingman Tactic: Immersion Demo</span>
                     </h2>
                     <p class="text-blue-200 max-w-3xl mx-auto text-lg">
-                        <span class="lang-zh">Tier 2 供应商难以打动？用“高科技 Demo”作为敲门砖。</span>
-                        <span class="lang-en">Hard to crack Tier 2s? Use a "High-Tech Demo" as your battering ram.</span>
+                        <span class="lang-zh">联合 Tank 厂家搭建实物 Demo，作为撬动 Tier 2 供应商的“敲门砖”。</span>
+                        <span class="lang-en">Co-build a physical Demo with Tank makers as a "Trojan Horse" to unlock Tier 2s.</span>
                     </p>
                 </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
-                    <!-- Step 1 -->
-                    <div class="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20">
-                        <div class="text-4xl mb-4">🤝</div>
-                        <h3 class="text-xl font-bold text-[#00C4D1] mb-2">
-                            <span class="lang-zh">1. 结盟液冷厂家</span><span class="lang-en">1. Partner with Liquid Cooling</span>
-                        </h3>
-                        <p class="text-sm text-gray-300">
-                            <span class="lang-zh">在台湾寻找浸没式 Tank/Fluid 厂家。提议：我们有客户渠道，你需要展示机会。<b>联合搭建实物 Demo。</b></span>
-                            <span class="lang-en">Find Taiwan Immersion Tank/Fluid makers. Pitch: We have the market channel, you need exposure. <b>Co-build a physical Demo.</b></span>
-                        </p>
-                    </div>
-
-                    <!-- Step 2 -->
-                    <div class="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20 relative">
-                        <div class="absolute -top-3 -right-3 bg-[#D946EF] text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg animate-pulse">KEY MOVER</div>
-                        <div class="text-4xl mb-4">🛩️</div>
-                        <h3 class="text-xl font-bold text-[#D946EF] mb-2">
-                            <span class="lang-zh">2. 僚机效应 (The Wingman)</span><span class="lang-en">2. The Wingman Effect</span>
-                        </h3>
-                        <p class="text-sm text-gray-300">
-                            <span class="lang-zh">拿着这个很酷的 Demo 去找其他 Tier 2 (如机箱、连接器、主板)。<br>话术：<b>"我们正在构建下一代液冷生态，这个 Demo 将在展厅展示，你想把你的产品放进来吗？"</b></span>
-                            <span class="lang-en">Approach other Tier 2s (Chassis, Connectors, Mobo) with this cool Demo.<br>Pitch: <b>"We are building a Next-Gen Liquid Ecosystem. Want your product inside this Demo?"</b></span>
-                        </p>
-                    </div>
-
-                    <!-- Step 3 -->
-                    <div class="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20">
-                        <div class="text-4xl mb-4">🌐</div>
-                        <h3 class="text-xl font-bold text-[#00C4D1] mb-2">
-                            <span class="lang-zh">3. 建立生态壁垒</span><span class="lang-en">3. Ecosystem Moat</span>
-                        </h3>
-                        <p class="text-sm text-gray-300">
-                            <span class="lang-zh">通过 Demo 绑定多家供应商，形成完整的“浸没式解决方案”。此时你不再是贸易商，而是<b>生态组局者</b>。</span>
-                            <span class="lang-en">Bind multiple suppliers via the Demo. You stop being a trader and become an <b>Ecosystem Orchestrator</b>.</span>
-                        </p>
-                    </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+                     <div class="bg-white/10 p-4 rounded-lg backdrop-blur-sm border border-white/20">
+                        <div class="text-2xl mb-2">🤝</div>
+                        <h4 class="font-bold text-white">1. 结盟 (Ally)</h4>
+                        <p class="text-xs text-blue-100">与液冷 Tank 厂联合展示</p>
+                     </div>
+                     <div class="bg-[#D946EF] p-4 rounded-lg shadow-lg transform md:-translate-y-2">
+                        <div class="text-2xl mb-2">🎯</div>
+                        <h4 class="font-bold text-white">2. 撬动 (Leverage)</h4>
+                        <p class="text-xs text-white">邀请 Tier 2 放入产品</p>
+                     </div>
+                     <div class="bg-white/10 p-4 rounded-lg backdrop-blur-sm border border-white/20">
+                        <div class="text-2xl mb-2">🕸️</div>
+                        <h4 class="font-bold text-white">3. 组局 (Orchestrate)</h4>
+                        <p class="text-xs text-blue-100">构建完整解决方案生态</p>
+                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 3. PRODUCT VERTICAL (OCP & ESS) -->
-        <section id="products">
-            <div class="bg-white rounded-2xl p-8 shadow-xl border border-gray-100">
-                <h2 class="section-title mb-8">
-                    <span class="lang-zh">产品垂直渗透策略</span>
-                    <span class="lang-en">Product Vertical Strategy</span>
-                </h2>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    
-                    <!-- OCP Focus -->
-                    <div class="border-l-4 border-pink-500 pl-6 py-2">
-                        <div class="flex items-center gap-3 mb-2">
-                            <span class="text-2xl">🖥️</span>
-                            <h3 class="text-xl font-bold text-gray-800"><span class="lang-zh">OCP 开放计算架构</span><span class="lang-en">OCP Infrastructure</span></h3>
-                        </div>
-                        <ul class="text-sm text-gray-600 space-y-2 list-disc pl-4">
-                            <li><span class="lang-zh"><b>Rack:</b> ORv3 标准整机柜 (集成液冷 Manifold)</span><span class="lang-en"><b>Rack:</b> ORv3 Standard Rack (w/ Liquid Manifold)</span></li>
-                            <li><span class="lang-zh"><b>Power:</b> Power Shelf, Busbar 供电系统</span><span class="lang-en"><b>Power:</b> Power Shelf, Busbar Systems</span></li>
-                            <li><span class="lang-zh"><b>Cooling:</b> DLC (冷板) & Immersion (浸没)</span><span class="lang-en"><b>Cooling:</b> DLC (Cold Plate) & Immersion</span></li>
-                        </ul>
-                    </div>
-
-                    <!-- Energy Storage Focus -->
-                    <div class="border-l-4 border-green-500 pl-6 py-2">
-                        <div class="flex items-center gap-3 mb-2">
-                            <span class="text-2xl">🔋</span>
-                            <h3 class="text-xl font-bold text-gray-800"><span class="lang-zh">储能系统 (备选)</span><span class="lang-en">Energy Storage (BESS)</span></h3>
-                        </div>
-                        <ul class="text-sm text-gray-600 space-y-2 list-disc pl-4">
-                            <li><span class="lang-zh"><b>C&I:</b> 工商业储能柜 (削峰填谷)</span><span class="lang-en"><b>C&I:</b> Commercial BESS Cabinets</span></li>
-                            <li><span class="lang-zh"><b>Container:</b> 集装箱式储能系统</span><span class="lang-en"><b>Container:</b> Containerized BESS</span></li>
-                            <li><span class="lang-zh"><b>Integration:</b> PCS + BMS 集成方案</span><span class="lang-en"><b>Integration:</b> PCS + BMS Integration</span></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Updated Boolean Search -->
-                <div class="mt-8 bg-gray-100 p-6 rounded-lg">
-                    <h4 class="text-sm font-bold text-gray-500 mb-4 uppercase tracking-wide">
-                        <span class="lang-zh">🔍 浸没式与 OCP 专用搜索指令</span>
-                        <span class="lang-en">🔍 Immersion & OCP Specific Boolean Strings</span>
-                    </h4>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <p class="text-xs text-gray-500 mb-1"><span class="lang-zh">寻找浸没式厂家 (Tank/Fluid):</span><span class="lang-en">Find Immersion Tank/Fluid Makers:</span></p>
-                            <div class="code-block">("Immersion Cooling" OR "Single-phase" OR "Two-phase") AND ("Tank" OR "Fluid" OR "Coolant") AND "Taiwan"</div>
-                        </div>
-                        <div>
-                            <p class="text-xs text-gray-500 mb-1"><span class="lang-zh">寻找 OCP 供应商:</span><span class="lang-en">Find OCP Suppliers:</span></p>
-                            <div class="code-block">("Open Compute Project" OR "OCP" OR "ORv3") AND ("Manufacturer" OR "OEM") AND ("Rack" OR "Power Shelf")</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 4. Full Script Library (Updated with Wingman Scripts) -->
-        <section id="scripts">
-            <h2 class="section-title">
-                <span class="lang-zh">全场景话术库</span>
-                <span class="lang-en">Full Scenario Scripts</span>
-            </h2>
-            <p class="section-subtitle">
-                <span class="lang-zh">新增“僚机策略”专用话术，用于结盟和撬动供应商</span>
-                <span class="lang-en">Added "Wingman" scripts for partnering and leveraging suppliers</span>
-            </p>
-
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden mt-6">
-                <!-- Tabs Header -->
-                <div class="flex flex-wrap border-b border-gray-200 bg-gray-50">
-                    <button class="tab-btn w-1/3 md:w-auto active" onclick="switchTab('dc')">
-                        <span class="lang-zh">🏢 DC 项目</span><span class="lang-en">🏢 DC Projects</span>
-                    </button>
-                    <button class="tab-btn w-1/3 md:w-auto" onclick="switchTab('oem')">
-                        <span class="lang-zh">🔌 普通 OEM</span><span class="lang-en">🔌 Regular OEM</span>
-                    </button>
-                    <button class="tab-btn w-1/3 md:w-auto" onclick="switchTab('dist')">
-                        <span class="lang-zh">🌍 渠道招募</span><span class="lang-en">🌍 Channel</span>
-                    </button>
-                    <!-- New Wingman Tab -->
-                    <button class="tab-btn w-full md:w-auto text-[#00C4D1] font-bold bg-blue-50" onclick="switchTab('wingman')">
-                        <span class="lang-zh">✈️ 浸没式僚机策略</span><span class="lang-en">✈️ Immersion Wingman</span>
-                    </button>
-                </div>
-
-                <!-- Content A: DC -->
-                <div id="tab-dc" class="tab-content active">
-                    <div class="bg-gray-50 p-4 mb-4 rounded border-l-4 border-[#004AAD]">
-                        <p class="text-xs text-gray-500 font-bold uppercase"><span class="lang-zh">核心价值点</span><span class="lang-en">Core Value</span></p>
-                        <p class="text-sm">PUE Reduction, High Density, OCP Standards</p>
-                    </div>
-                    <div class="bg-white border border-gray-200 p-4 rounded shadow-sm">
-                        <p class="text-sm text-gray-700 font-serif italic">
-                            <span class="lang-zh">"Hi [Name], 关注到您正在推进 [Project Name]。我们刚协助 [Similar Project] 部署了基于 OCP ORv3 的浸没式液冷方案。鉴于该项目的高算力密度，希望能分享一份技术简报。"</span>
-                            <span class="lang-en">"Hi [Name], regarding [Project Name]. We recently deployed an OCP ORv3-based Immersion Cooling solution for [Similar Project]. Given your high compute density, I'd love to share a technical brief."</span>
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Content B: OEM -->
-                <div id="tab-oem" class="tab-content">
-                    <div class="bg-gray-50 p-4 mb-4 rounded border-l-4 border-[#0065D1]">
-                        <p class="text-xs text-gray-500 font-bold uppercase"><span class="lang-zh">核心价值点</span><span class="lang-en">Core Value</span></p>
-                        <p class="text-sm">Global Sourcing, Stable Volume</p>
-                    </div>
-                    <div class="bg-white border border-gray-200 p-4 rounded shadow-sm">
-                        <p class="text-sm text-gray-700 font-serif italic">
-                            <span class="lang-zh">"Hi [Name], 我们正在为全球市场寻找具备 [Spec] 能力的合作伙伴。鉴于贵司在 [Park] 的声誉，希望能建立联系探讨潜在的 OEM 合作。"</span>
-                            <span class="lang-en">"Hi [Name], we are sourcing partners with [Spec] capabilities. Given your reputation in [Park], I'd like to connect to discuss potential OEM collaboration."</span>
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Content C: Distributor -->
-                <div id="tab-dist" class="tab-content">
-                    <div class="bg-gray-50 p-4 mb-4 rounded border-l-4 border-[#00C4D1]">
-                        <p class="text-xs text-gray-500 font-bold uppercase"><span class="lang-zh">核心价值点</span><span class="lang-en">Core Value</span></p>
-                        <p class="text-sm">Margins, BPO Demo Support</p>
-                    </div>
-                    <div class="bg-white border border-gray-200 p-4 rounded shadow-sm">
-                        <p class="text-sm text-gray-700 font-serif italic">
-                            <span class="lang-zh">"我们提供极具竞争力的利润结构，并由 BPO 团队提供 24/7 演示支持。您是否有兴趣看看我们的合作政策草案？"</span>
-                            <span class="lang-en">"We offer competitive margins and 24/7 demo support via our BPO team. Would you be open to reviewing our partnership policy draft?"</span>
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Content D: WINGMAN (NEW) -->
-                <div id="tab-wingman" class="tab-content">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        
-                        <!-- Script 1: Partnering with Tank/Fluid Makers -->
-                        <div>
-                            <h4 class="text-[#00C4D1] font-bold mb-2 text-xs uppercase"><span class="lang-zh">话术 1: 结盟液冷 Tank 厂家</span><span class="lang-en">Script 1: Partnering w/ Tank Makers</span></h4>
-                            <div class="bg-cyan-50 p-4 rounded text-sm text-gray-700 font-serif border-l-4 border-cyan-500">
-                                <p class="mb-2"><span class="lang-zh">"Hi [Name], 关注到贵司在 Single-phase Immersion 领域的创新。"</span><span class="lang-en">"Hi [Name], impressed by your innovation in Single-phase Immersion."</span></p>
-                                <p class="mb-2"><span class="lang-zh">"我们正在构建一个端到端的液冷生态展厅，面向全球 DC 客户。<b>我们想邀请贵司作为核心 Tank 合作伙伴加入该生态，联合搭建一个实物 Demo。</b>"</span><span class="lang-en">"We are building an end-to-end Liquid Cooling Ecosystem Showroom for global DC clients. <b>We want to invite you as a core Tank partner to co-build a physical Demo.</b>"</span></p>
-                                <p><span class="lang-zh">"这是一个展示给全球买家的绝佳机会，有兴趣聊聊联合推广吗？"</span><span class="lang-en">"Great exposure to global buyers. Interested in discussing joint promotion?"</span></p>
-                            </div>
-                        </div>
-
-                        <!-- Script 2: Leveraging Demo to get Tier 2s -->
-                        <div>
-                            <h4 class="text-[#D946EF] font-bold mb-2 text-xs uppercase"><span class="lang-zh">话术 2: 撬动 Tier 2 供应商</span><span class="lang-en">Script 2: Leveraging Demo to get Tier 2s</span></h4>
-                            <div class="bg-pink-50 p-4 rounded text-sm text-gray-700 font-serif border-l-4 border-pink-500">
-                                <p class="mb-2"><span class="lang-zh">"Hi [Name], 我们正与 [Tank Partner Name] 联合搭建下一代浸没式液冷 Demo。"</span><span class="lang-en">"Hi [Name], we are building a Next-Gen Immersion Demo with [Tank Partner Name]."</span></p>
-                                <p class="mb-2"><span class="lang-zh">"我们需要高品质的 [Component, e.g. Connectors] 来完善这个生态系统。<b>如果贵司能提供样品支持，我们将在这个面向全球的高端 Demo 中展示贵司品牌。</b>"</span><span class="lang-en">"We need high-quality [Component] to complete this ecosystem. <b>If you can support with samples, we will feature your brand in this global high-end Demo.</b>"</span></p>
-                                <p><span class="lang-zh">"这是一个低成本进入液冷前沿市场的机会。"</span><span class="lang-en">"A low-cost opportunity to enter the advanced liquid cooling market."</span></p>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- 5. BPO Digital Showroom -->
-        <section id="bpo" class="bg-gray-900 p-8 md:p-12 rounded-2xl text-white shadow-2xl relative overflow-hidden">
+        <!-- 4. BPO Digital Showroom (Restored & Detailed) -->
+        <section id="bpo" class="bpo-gradient p-8 md:p-12 rounded-2xl text-white shadow-2xl relative overflow-hidden">
             <div class="absolute top-0 right-0 w-64 h-64 bg-[#00C4D1] rounded-full filter blur-[100px] opacity-20"></div>
+            
             <div class="relative z-10">
                 <div class="flex flex-col md:flex-row justify-between items-start mb-10">
                     <div>
                         <h2 class="text-3xl md:text-4xl font-bold text-[#00C4D1] mb-2">
-                            <span class="lang-zh">BPO 数字展厅：流量变现</span>
-                            <span class="lang-en">BPO Digital Showroom: Conversion</span>
+                            <span class="lang-zh">BPO 数字展厅：全球获客引擎</span>
+                            <span class="lang-en">BPO Digital Showroom: Global Engine</span>
                         </h2>
                         <p class="text-gray-300 max-w-xl">
-                            <span class="lang-zh">利用菲律宾团队展示您的“浸没式液冷 Demo”，实现 24/7 全球获客。</span>
-                            <span class="lang-en">Showcase your "Immersion Demo" via PH teams for 24/7 global lead gen.</span>
+                            <span class="lang-zh">利用菲律宾 BPO 团队 ($600-$1000/月) 进行 24/7 实时实物演示，解决时差与信任问题。</span>
+                            <span class="lang-en">Leverage PH BPO teams ($600-$1000/mo) for 24/7 live demos, solving time zone & trust issues.</span>
                         </p>
                     </div>
-                    <div class="bg-white/10 backdrop-blur-md p-4 rounded-lg mt-4 md:mt-0 border border-white/20">
-                        <p class="text-sm font-mono text-[#00C4D1]"><span class="lang-zh">实物 Demo + 虚拟展示</span><span class="lang-en">Physical Demo + Virtual Tour</span></p>
+                    <div class="hidden md:block bg-white/10 p-4 rounded-lg border border-white/20 text-center">
+                        <div class="text-xs text-gray-400">Conversion Rate</div>
+                        <div class="text-2xl font-bold text-[#00C4D1]">+40%</div>
                     </div>
                 </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
-                    <div class="bg-white/5 p-6 rounded-lg border border-white/10">
-                        <div class="text-4xl mb-3">🎥</div>
-                        <h4 class="font-bold text-[#00C4D1] mb-2"><span class="lang-zh">1. 实物拍摄</span><span class="lang-en">1. Live Feed</span></h4>
-                        <p class="text-xs text-gray-300"><span class="lang-zh">在展厅架设高清摄像头，直拍浸没式机柜运行状态。</span><span class="lang-en">HD cams pointing at the running Immersion Tank.</span></p>
+
+                <!-- Flow Diagram -->
+                <div class="relative">
+                    <!-- Connecting Line -->
+                    <div class="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-white/10 -translate-y-1/2 z-0"></div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 relative z-10">
+                        <!-- Step 1 -->
+                        <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 hover:border-[#00C4D1] transition shadow-lg">
+                            <div class="text-3xl mb-3">🔗</div>
+                            <h4 class="font-bold text-white mb-2"><span class="lang-zh">1. 流量导入</span><span class="lang-en">1. Traffic</span></h4>
+                            <p class="text-xs text-gray-400"><span class="lang-zh">LinkedIn InMail 不发产品册，只发<b>“看一眼实物”</b>的展厅链接。</span><span class="lang-en">Don't send PDFs. Send a link to <b>"See it Live"</b>.</span></p>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 hover:border-[#00C4D1] transition shadow-lg">
+                            <div class="text-3xl mb-3">🎥</div>
+                            <h4 class="font-bold text-white mb-2"><span class="lang-zh">2. 实时连接</span><span class="lang-en">2. Live Connect</span></h4>
+                            <p class="text-xs text-gray-400"><span class="lang-zh">客户点击即连通 Zoom。高清摄像头对着<b>飞轮/OCP机柜</b>。</span><span class="lang-en">Instant Zoom connect. HD Cams pointed at <b>Flywheel/OCP Racks</b>.</span></p>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 hover:border-[#00C4D1] transition shadow-lg">
+                            <div class="text-3xl mb-3">🎧</div>
+                            <h4 class="font-bold text-white mb-2"><span class="lang-zh">3. BPO 讲解</span><span class="lang-en">3. BPO Guide</span></h4>
+                            <p class="text-xs text-gray-400"><span class="lang-zh">菲律宾坐席用流利英语演示设备运行，回答基础参数问题。</span><span class="lang-en">PH agent demos running gear in native English, answers specs.</span></p>
+                        </div>
+
+                        <!-- Step 4 -->
+                        <div class="bg-[#00C4D1] p-6 rounded-xl shadow-lg text-gray-900 transform md:-translate-y-2">
+                            <div class="text-3xl mb-3">🤝</div>
+                            <h4 class="font-bold mb-2"><span class="lang-zh">4. 销售移交</span><span class="lang-en">4. Sales Handoff</span></h4>
+                            <p class="text-xs font-medium"><span class="lang-zh">确认意向 (SQL) 后，预约核心技术团队的正式会议。</span><span class="lang-en">Qualified leads (SQL) booked for Core Tech Team meeting.</span></p>
+                        </div>
                     </div>
-                    <div class="bg-white/5 p-6 rounded-lg border border-white/10">
-                        <div class="text-4xl mb-3">🎧</div>
-                        <h4 class="font-bold text-[#00C4D1] mb-2"><span class="lang-zh">2. BPO 讲解</span><span class="lang-en">2. BPO Explainer</span></h4>
-                        <p class="text-xs text-gray-300"><span class="lang-zh">菲律宾员工通过 Zoom 远程控制摄像头，为客户讲解。</span><span class="lang-en">PH staff control cams via Zoom to give guided tours.</span></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Full Script Library -->
+        <section id="scripts">
+            <h2 class="section-title">
+                <span class="lang-zh">全场景话术库</span>
+                <span class="lang-en">Scenario-Based Scripts</span>
+            </h2>
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden mt-6">
+                <!-- Tabs Header -->
+                <div class="flex flex-wrap border-b border-gray-200 bg-gray-50">
+                    <button class="tab-btn active" onclick="switchTab('flywheel')">
+                        <span class="lang-zh">⚙️ 飞轮 UPS 推广</span><span class="lang-en">⚙️ Flywheel Pitch</span>
+                    </button>
+                    <button class="tab-btn" onclick="switchTab('ocp')">
+                        <span class="lang-zh">🖥️ OCP 全案推广</span><span class="lang-en">🖥️ OCP Pitch</span>
+                    </button>
+                    <button class="tab-btn" onclick="switchTab('wingman')">
+                        <span class="lang-zh">✈️ 僚机策略</span><span class="lang-en">✈️ Wingman</span>
+                    </button>
+                </div>
+
+                <!-- Tab 1: Flywheel UPS -->
+                <div id="tab-flywheel" class="tab-content active">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <h4 class="text-purple-600 font-bold mb-2 text-xs uppercase"><span class="lang-zh">痛点切入：电池寿命与 TCO</span><span class="lang-en">Pain Point: Battery Life & TCO</span></h4>
+                            <div class="bg-gray-100 p-4 rounded text-sm text-gray-700 font-serif border-l-4 border-purple-500">
+                                <p class="mb-2"><span class="lang-zh">"Hi [Name], 看到贵司在 [Project] 中强调了 ESG 和运营成本。"</span><span class="lang-en">"Hi [Name], saw you highlighted ESG and OpEx in [Project]."</span></p>
+                                <p class="mb-2"><span class="lang-zh">"传统铅酸电池每 3-5 年需更换且有火灾风险。我们的 <b>MW 级磁悬浮飞轮 UPS</b> 提供 20 年免维护寿命。这是许多 AI 数据中心现在的首选备电方案。"</span><span class="lang-en">"Lead-acid batteries need replacement every 3-5 years. Our <b>MW-Class Maglev Flywheel UPS</b> offers a 20-year maintenance-free lifespan. It's the preferred backup for AI DCs."</span></p>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-purple-600 font-bold mb-2 text-xs uppercase"><span class="lang-zh">跟进：数据中心飞轮 (Data Center Flywheel)</span><span class="lang-en">Follow-up: Data Center Flywheel</span></h4>
+                            <div class="bg-gray-100 p-4 rounded text-sm text-gray-700 font-serif border-l-4 border-purple-500">
+                                <p class="mb-2"><span class="lang-zh">"附件是 1MW 飞轮 UPS 的技术参数。它不仅是备电，更是您数据中心的<b>绿色能源飞轮</b>——显著降低碳足迹。"</span><span class="lang-en">"Attached specs for the 1MW Flywheel UPS. It's not just backup; it's a <b>Green Energy Flywheel</b> for your DC, significantly reducing carbon footprint."</span></p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="bg-white/5 p-6 rounded-lg border border-white/10">
-                        <div class="text-4xl mb-3">📈</div>
-                        <h4 class="font-bold text-[#00C4D1] mb-2"><span class="lang-zh">3. 信任转化</span><span class="lang-en">3. Trust Won</span></h4>
-                        <p class="text-xs text-gray-300"><span class="lang-zh">眼见为实。实物 Demo 能极大提升信任度，促进下单。</span><span class="lang-en">Seeing is believing. Live Demos skyrocket trust & sales.</span></p>
+                </div>
+
+                <!-- Tab 2: OCP -->
+                <div id="tab-ocp" class="tab-content">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <h4 class="text-pink-600 font-bold mb-2 text-xs uppercase"><span class="lang-zh">OCP 整体方案</span><span class="lang-en">OCP Full Solution</span></h4>
+                            <div class="bg-gray-100 p-4 rounded text-sm text-gray-700 font-serif border-l-4 border-pink-500">
+                                <p class="mb-2"><span class="lang-zh">"Hi [Name], 关注到您正在规划新的 AI 算力集群。"</span><span class="lang-en">"Hi [Name], noticed your planning for the new AI compute cluster."</span></p>
+                                <p class="mb-2"><span class="lang-zh">"针对单柜 30kW+ 热密度，我们提供 <b>OCP ORv3 标准整机柜</b>：集成 48V Power Shelf 和盲插液冷 Manifold。能让部署速度提升 50%。"</span><span class="lang-en">"For 30kW+ rack density, we offer <b>OCP ORv3 Rack Solutions</b>: integrated 48V Power Shelf and blind-mate liquid manifolds. Speeds up deployment by 50%."</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 3: Wingman -->
+                <div id="tab-wingman" class="tab-content">
+                    <div class="bg-cyan-50 p-4 rounded text-sm text-gray-700 font-serif border-l-4 border-cyan-500">
+                        <h4 class="text-cyan-700 font-bold mb-2"><span class="lang-zh">撬动 Tier 2 供应商</span><span class="lang-en">Pitching Tier 2s</span></h4>
+                        <p class="mb-2"><span class="lang-zh">"Hi [Name], 我们正与 [Tank Partner] 联合搭建面向全球客户的<b>浸没式液冷实物 Demo</b>。我们需要高品质的 [Product] 来完善这个生态。如果贵司能加入，我们将在这个高科技 Demo 中展示您的品牌。"</span><span class="lang-en">"Hi [Name], we are building a global <b>Immersion Cooling Demo</b> with [Tank Partner]. We need premium [Product] to complete this ecosystem. If you join, we will feature your brand in this Demo."</span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Boolean Search Box -->
+        <section class="bg-gray-800 p-6 rounded-lg shadow-inner mt-16 text-white">
+            <h3 class="text-xl font-bold text-[#00C4D1] mb-4">
+                <span class="lang-zh">🔍 核心产品搜索指令</span>
+                <span class="lang-en">🔍 Product Search Strings</span>
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <p class="text-sm text-gray-400 mb-1">Flywheel UPS / Kinetic Energy Storage:</p>
+                    <div class="code-block">("Data Center" OR "Mission Critical") AND ("Flywheel" OR "Kinetic Energy" OR "Dynamic UPS") AND ("Sustainability" OR "Green")</div>
+                </div>
+                <div>
+                    <p class="text-sm text-gray-400 mb-1">OCP / Rack / Power / Cooling:</p>
+                    <div class="code-block">("Open Compute" OR "OCP" OR "ORv3") AND ("Busbar" OR "Power Shelf" OR "Liquid Cooling") AND ("Hyperscale" OR "AI")</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Daily Workflow -->
+        <section id="workflow" class="mt-16">
+            <h2 class="section-title">
+                <span class="lang-zh">日常实操工作流</span>
+                <span class="lang-en">Daily Workflow</span>
+            </h2>
+            <div class="relative max-w-4xl mx-auto mt-10">
+                <div class="absolute left-2 md:left-1/2 w-1 h-full bg-gray-200 -translate-x-1/2"></div>
+                <div class="timeline-item mb-8">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4 class="font-bold text-[#004AAD]">09:00 - Hunter Mode</h4>
+                        <p class="text-sm text-gray-700 mt-1">Use boolean strings to find 15 new Flywheel/OCP leads. Send Connection Request.</p>
+                    </div>
+                </div>
+                <div class="timeline-item mb-8">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4 class="font-bold text-[#004AAD]">14:00 - BPO Sync</h4>
+                        <p class="text-sm text-gray-700 mt-1">Forward warm leads to PH BPO team for "Digital Showroom" scheduling.</p>
                     </div>
                 </div>
             </div>
@@ -427,156 +440,67 @@
 
     </main>
 
-    <footer class="bg-gray-800 text-gray-400 py-8 mt-12">
+    <footer class="bg-gray-900 text-gray-400 py-8 mt-12">
         <div class="container mx-auto px-6 text-center text-sm">
             <p class="mb-2">
-                <span class="lang-zh">LinkedIn B2B 卓越运营方案 (僚机策略版)</span>
-                <span class="lang-en">LinkedIn B2B Excellence Playbook (Wingman Ed.)</span>
+                <span class="lang-zh">&copy; 2025 B2B 终极全案 (飞轮 + OCP + 展厅)</span>
+                <span class="lang-en">&copy; 2025 Ultimate Playbook (Flywheel + OCP + Showroom)</span>
             </p>
-            <p>&copy; 2025 Internal Use Only.</p>
         </div>
     </footer>
 
     <script>
-        // --- Bilingual Data Configuration ---
+        // Data
         const chartData = {
-            dcRoles: {
-                labels: {
-                    zh: ['DC 施工经理', '采购经理', '关键任务工程师', 'EPC 顾问', 'IT 基础设施总监'],
-                    en: ['DC Construction Mgr', 'Procurement Mgr', 'Mission Critical Eng', 'EPC Consultant', 'IT Infra Head']
-                }
-            },
-            oemKeywords: {
-                labels: {
-                    zh: ['EMS 代工', '浸没式组件', 'OCP 机柜', '板卡组装'],
-                    en: ['EMS', 'Immersion Parts', 'OCP Rack', 'PCB Assembly']
-                }
-            },
-            distributorTypes: {
-                labels: {
-                    zh: ['增值分销商 (VAD)', '系统集成商 (SI)', '区域经销商', '能源专家'],
-                    en: ['Value Added Dist (VAD)', 'System Integrator (SI)', 'Regional Reseller', 'Energy Specialist']
-                }
-            }
+            dcRoles: { labels: { zh: ['DC 施工', '采购', '关键任务', '顾问'], en: ['Construction', 'Procurement', 'Mission Critical', 'Consultant'] } },
+            oemKeywords: { labels: { zh: ['EMS', 'OCP', 'Flywheel', 'Cooling'], en: ['EMS', 'OCP', 'Flywheel', 'Cooling'] } },
+            distributorTypes: { labels: { zh: ['VAD', 'SI', 'Reseller', 'Energy'], en: ['VAD', 'SI', 'Reseller', 'Energy'] } }
         };
 
-        // --- Chart Instances ---
-        let dcRolesChart, oemKeywordsChart, distributorTypeChart;
-
-        // --- Helper: Wrap Text ---
-        const wrapLabel = (str, maxWidth = 15) => {
-            if (typeof str !== 'string' || str.length <= maxWidth) return str;
-            const words = str.split(' ');
-            const lines = [];
-            let currentLine = '';
-            words.forEach(word => {
-                if ((currentLine + ' ' + word).trim().length > maxWidth && currentLine.length > 0) {
-                    lines.push(currentLine);
-                    currentLine = word;
-                } else {
-                    currentLine = (currentLine + ' ' + word).trim();
-                }
-            });
-            if (currentLine.length > 0) lines.push(currentLine);
-            return lines;
-        };
-
-        // --- Helper: Tab Switching ---
+        // Tabs
         function switchTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
-            
             document.getElementById('tab-' + tabId).classList.add('active');
-            
-            const buttons = document.querySelectorAll('.tab-btn');
-            if(tabId === 'dc') buttons[0].classList.add('active');
-            if(tabId === 'oem') buttons[1].classList.add('active');
-            if(tabId === 'dist') buttons[2].classList.add('active');
-            if(tabId === 'wingman') buttons[3].classList.add('active');
+            // Highlight button logic simplified
+            const btns = document.querySelectorAll('.tab-btn');
+            if(tabId==='flywheel') btns[0].classList.add('active');
+            if(tabId==='ocp') btns[1].classList.add('active');
+            if(tabId==='wingman') btns[2].classList.add('active');
         }
 
-        // --- Initialization ---
+        // Init
         window.onload = function () {
-            // 1. DC Roles Chart
             const dcRolesCtx = document.getElementById('dcRolesChart').getContext('2d');
-            dcRolesChart = new Chart(dcRolesCtx, {
+            const dcChart = new Chart(dcRolesCtx, {
                 type: 'bar',
-                data: {
-                    labels: chartData.dcRoles.labels.zh.map(l => wrapLabel(l)),
-                    datasets: [{
-                        label: 'Score',
-                        data: [85, 90, 70, 80, 75],
-                        backgroundColor: ['#004AAD', '#0065D1', '#00C4D1', '#00D1B0', '#004AAD'],
-                        borderRadius: 4
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: { legend: { display: false } },
-                    scales: { x: { display: false }, y: { display: false } }
-                }
+                data: { labels: chartData.dcRoles.labels.zh, datasets: [{ label: 'Score', data: [90, 85, 70, 80], backgroundColor: '#004AAD' }] },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
             });
 
-            // 2. OEM Keywords Chart
             const oemKeywordsCtx = document.getElementById('oemKeywordsChart').getContext('2d');
-            oemKeywordsChart = new Chart(oemKeywordsCtx, {
+            const oemChart = new Chart(oemKeywordsCtx, {
                 type: 'bubble',
-                data: {
-                    datasets: [
-                        { label: chartData.oemKeywords.labels.zh[0], data: [{ x: 20, y: 30, r: 15 }], backgroundColor: '#004AAD' },
-                        { label: chartData.oemKeywords.labels.zh[1], data: [{ x: 30, y: 25, r: 20 }], backgroundColor: '#D946EF' }, // Pink for Immersion
-                        { label: chartData.oemKeywords.labels.zh[2], data: [{ x: 15, y: 15, r: 12 }], backgroundColor: '#00C4D1' },
-                        { label: chartData.oemKeywords.labels.zh[3], data: [{ x: 25, y: 10, r: 15 }], backgroundColor: '#10B981' } 
-                    ]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: { legend: { position: 'right', labels: { boxWidth: 10, font: { size: 10 } } } },
-                    scales: { x: { display: false }, y: { display: false } }
-                }
+                data: { datasets: [{ label: 'OCP', data: [{ x: 30, y: 25, r: 20 }], backgroundColor: '#D946EF' }] },
+                options: { responsive: true, maintainAspectRatio: false }
             });
 
-            // 3. Distributor Chart
             const distributorTypeCtx = document.getElementById('distributorTypeChart').getContext('2d');
-            distributorTypeChart = new Chart(distributorTypeCtx, {
+            const distChart = new Chart(distributorTypeCtx, {
                 type: 'doughnut',
-                data: {
-                    labels: chartData.distributorTypes.labels.zh,
-                    datasets: [{
-                        data: [40, 30, 20, 10],
-                        backgroundColor: ['#004AAD', '#0065D1', '#00C4D1', '#10B981'], 
-                        hoverOffset: 4
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: { legend: { position: 'right', labels: { boxWidth: 10, font: { size: 10 } } } }
-                }
+                data: { labels: chartData.distributorTypes.labels.zh, datasets: [{ data: [40, 30, 20, 10], backgroundColor: ['#004AAD', '#0065D1', '#00C4D1', '#10B981'] }] },
+                options: { responsive: true, maintainAspectRatio: false }
             });
 
-            // 4. Language Toggle
+            // Lang Toggle
             const langBtn = document.getElementById('langToggle');
-            let isEnglish = false;
-
             langBtn.addEventListener('click', () => {
-                isEnglish = !isEnglish;
                 document.body.classList.toggle('english-mode');
+                langBtn.innerText = document.body.classList.contains('english-mode') ? "EN / 中文" : "中文 / EN";
+                const lang = document.body.classList.contains('english-mode') ? 'en' : 'zh';
                 
-                const lang = isEnglish ? 'en' : 'zh';
-                
-                dcRolesChart.data.labels = chartData.dcRoles.labels[lang].map(l => wrapLabel(l));
-                dcRolesChart.update();
-
-                oemKeywordsChart.data.datasets.forEach((ds, i) => {
-                    ds.label = chartData.oemKeywords.labels[lang][i];
-                });
-                oemKeywordsChart.update();
-
-                distributorTypeChart.data.labels = chartData.distributorTypes.labels[lang];
-                distributorTypeChart.update();
+                dcChart.data.labels = chartData.dcRoles.labels[lang]; dcChart.update();
+                distChart.data.labels = chartData.distributorTypes.labels[lang]; distChart.update();
             });
         };
     </script>
